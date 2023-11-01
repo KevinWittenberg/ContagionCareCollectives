@@ -927,7 +927,16 @@ cv4 <- train[2443:3256, "target"]
 
 cv_base <- c(mean(as.numeric(cv1)) - 1, mean(as.numeric(cv2)) - 1, mean(as.numeric(cv3)) - 1, mean(as.numeric(cv4)) - 1)
 
+cv_base_f1 <- cv4 - mean(cv_base[1], cv_base[2], cv_base[3])
+cv_base_f2 <- cv3 - mean(cv_base[1], cv_base[2], cv_base[4])
+cv_base_f3 <- cv2 - mean(cv_base[1], cv_base[3], cv_base[4])
+cv_base_f4 <- cv1 - mean(cv_base[2], cv_base[3], cv_base[4])
+
 #Mean accuracy for base model
+mean(cv_base_f1, cv_base_f2, cv_base_f3, cv_base_f4)
+#standard deviation of baseline model
+sd(cv_base_f1, cv_base_f2, cv_base_f3, cv_base_f4)
+
 1 - mean(cv_base)
 
 sd(cv_base)
